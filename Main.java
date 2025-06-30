@@ -1,16 +1,19 @@
 import java.util.Scanner;
-
+// Main class to run the Driver License Management System
 public class Main {
     public static void main(String[] args) {
+        // Create manager and scanner for user input
         DriverLicenseManager manager = new DriverLicenseManager();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
+        // Main loop for menu-driven program
         while (running) {
             displayMainMenu();
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
 
+            // Handle user menu choice
             switch (choice) {
                 case 1:
                     addNewLicense(manager, scanner);
@@ -35,9 +38,10 @@ public class Main {
                     System.out.println("Invalid option. Please try again.");
             }
         }
-        scanner.close();
+        scanner.close(); // Close scanner when done
     }
 
+    // Show the main menu options
     private static void displayMainMenu() {
         System.out.println("\nDriver License Management System");
         System.out.println("1. Add new license");
@@ -49,6 +53,7 @@ public class Main {
         System.out.print("Choose an option: ");
     }
 
+    // Gather info and add a new license
     private static void addNewLicense(DriverLicenseManager manager, Scanner scanner) {
         System.out.print("Enter driver name: ");
         String name = scanner.nextLine();
@@ -74,12 +79,14 @@ public class Main {
         } catch (NumberFormatException e) {
             System.out.println("Invalid year. Setting to 0.");
         }
+        // Create and add new license
         DriverLisence newLicense = new DriverLisence(name, address, experience, vehicleType, vehicleBrand, manufacturingYear, issuingYear);
         manager.addLicense(newLicense);
         System.out.println("New license added:");
         System.out.println(newLicense);
     }
 
+    // Update an existing license's info
     private static void updateLicenseInfo(DriverLicenseManager manager, Scanner scanner) {
         System.out.print("Enter driver ID to update: ");
         int updateID = scanner.nextInt();
@@ -91,6 +98,7 @@ public class Main {
         }
         
         boolean updating = true;
+        // Loop to allow multiple field updates
         while (updating) {
             System.out.println("\nCurrent License Info:");
             System.out.println(licenseToUpdate);
@@ -110,6 +118,7 @@ public class Main {
         }
     }
 
+    // Show menu for which field to update
     private static void displayUpdateMenu() {
         System.out.println("Which field do you want to change?");
         System.out.println("1. Driver Name");
@@ -122,6 +131,7 @@ public class Main {
         System.out.print("Enter a number (1-7): ");
     }
 
+    // Update a specific field of a license
     private static void updateLicenseField(DriverLisence license, int field, Scanner scanner) {
         switch (field) {
             case 1:
@@ -165,6 +175,7 @@ public class Main {
         }
     }
 
+    // Search for a license by ID, name, or plate
     private static void searchForLicense(DriverLicenseManager manager, Scanner scanner) {
         System.out.println("Search by:");
         System.out.println("1. Driver ID");
@@ -184,6 +195,7 @@ public class Main {
         }
     }
 
+    // Helper to perform the actual search
     private static DriverLisence performSearch(DriverLicenseManager manager, Scanner scanner, int searchOption) {
         switch (searchOption) {
             case 1:

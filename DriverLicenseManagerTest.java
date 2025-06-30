@@ -2,9 +2,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
+// Unit tests for DriverLicenseManager
 class DriverLicenseManagerTest {
     @Test
     void testAddAndGetAllLicenses() {
+        // Test adding a license and retrieving all licenses
         DriverLicenseManager manager = new DriverLicenseManager();
         DriverLisence lic = new DriverLisence("Alice", 100001, "123 St", "novice", "car", "Toyota", 2015, 60000001, 2022);
         manager.addLicense(lic);
@@ -15,6 +17,7 @@ class DriverLicenseManagerTest {
 
     @Test
     void testUpdateLicense() {
+        // Test updating a license and checking updated fields
         DriverLicenseManager manager = new DriverLicenseManager();
         DriverLisence lic = new DriverLisence("Bob", 100002, "456 Ave", "expert", "truck", "Ford", 2018, 60000002, 2021);
         manager.addLicense(lic);
@@ -28,6 +31,7 @@ class DriverLicenseManagerTest {
 
     @Test
     void testSearchLicense() {
+        // Test searching for a license by ID
         DriverLicenseManager manager = new DriverLicenseManager();
         DriverLisence lic = new DriverLisence("Carol", 100003, "321 Rd", "novice", "motor bike", "Yamaha", 2017, 60000003, 2020);
         manager.addLicense(lic);
@@ -38,6 +42,7 @@ class DriverLicenseManagerTest {
 
     @Test
     void testRemoveLicense() {
+        // Test removing a license and ensuring it's gone
         DriverLicenseManager manager = new DriverLicenseManager();
         DriverLisence lic = new DriverLisence("Dave", 100004, "654 Ln", "expert", "car", "BMW", 2019, 60000004, 2022);
         manager.addLicense(lic);
@@ -48,11 +53,27 @@ class DriverLicenseManagerTest {
 
     @Test
     void testListIsCopy() {
+        // Test that getAllLicenses returns a copy, not the original list
         DriverLicenseManager manager = new DriverLicenseManager();
         DriverLisence lic = new DriverLisence("Eve", 100005, "987 Pkwy", "novice", "truck", "Chevy", 2016, 60000005, 2021);
         manager.addLicense(lic);
         List<DriverLisence> all = manager.getAllLicenses();
         all.clear();
         assertEquals(1, manager.getAllLicenses().size());
+    }
+
+    @Test
+    void testAutomaticIdsAndLicenseCount() {
+        // Test automatic driver ID and registration plate assignment, and license count
+        DriverLicenseManager manager = new DriverLicenseManager();
+        DriverLisence lic1 = new DriverLisence("Test1", "Addr1", "novice", "car", "Brand1", 2010, 2020);
+        DriverLisence lic2 = new DriverLisence("Test2", "Addr2", "expert", "truck", "Brand2", 2012, 2021);
+        manager.addLicense(lic1);
+        manager.addLicense(lic2);
+        // Check that IDs are unique and incremented
+        assertEquals(lic1.getDriverID() + 1, lic2.getDriverID());
+        assertEquals(lic1.getRegistrationPlateNumber() + 1, lic2.getRegistrationPlateNumber());
+        // Check the number of licenses
+        assertEquals(2, manager.getAllLicenses().size());
     }
 } 
