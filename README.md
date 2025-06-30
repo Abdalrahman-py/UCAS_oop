@@ -162,14 +162,41 @@ This class contains unit tests to verify all functionality works correctly:
 
 ## Testing the Application
 
-Run the test suite to verify everything works:
-```bash
-java -cp ".:../junit-platform-console-standalone-1.10.2.jar" org.junit.platform.console.ConsoleLauncher --class-path . --scan-class-path
+This project uses a `Makefile` to make running all unit tests easy. Instead of typing a long command, you can use a single, short command:
+
+```sh
+make test
 ```
 
+### What does `make test` do?
+- It runs all the unit tests in the project using the JUnit platform.
+- The command in the Makefile is:
+  ```sh
+  java -jar ../junit-platform-console-standalone-1.10.2.jar --class-path . --scan-class-path
+  ```
+- This finds and executes all test classes in the current directory.
+
+### Why use `make test`?
+- **Saves time:** No need to remember or type long Java commands.
+- **Consistency:** Always runs tests the same way, reducing mistakes.
+- **Beginner-friendly:** Anyone can test the project with a single command.
+
+### How to use
+1. Open a terminal and navigate to the `final` directory:
+   ```sh
+   cd final
+   ```
+2. Run all tests with:
+   ```sh
+   make test
+   ```
+3. You will see the test results printed in the terminal.
+
 **Expected Output:**
-- All 5 tests should pass
+- All tests should pass
 - You'll see green checkmarks (✔) for each test
+
+If you have any issues, make sure you have `make` installed and the JUnit jar is present in the parent directory.
 
 ## Troubleshooting
 
