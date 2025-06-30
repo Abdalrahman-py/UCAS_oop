@@ -22,7 +22,7 @@ A Java application for managing driver licenses with basic CRUD (Create, Read, U
 #### Option 1: Download JUnit Standalone JAR
 1. Go to [JUnit 5 Releases](https://github.com/junit-team/junit5/releases)
 2. Download `junit-platform-console-standalone-1.10.2.jar`
-3. Place the JAR file in the **parent directory** of this project (one level up from the `final` folder)
+3. Place the JAR file in your project directory
 
 #### Option 2: Using Maven (if you have Maven installed)
 ```bash
@@ -38,7 +38,7 @@ gradle dependencies --configuration testRuntimeClasspath
 
 1. **Compile the code:**
    ```bash
-   javac -cp "../junit-platform-console-standalone-1.10.2.jar" *.java
+   javac -cp "junit-platform-console-standalone-1.10.2.jar" *.java
    ```
 
 2. **Run the main application:**
@@ -48,7 +48,7 @@ gradle dependencies --configuration testRuntimeClasspath
 
 3. **Run the tests:**
    ```bash
-   java -cp ".:../junit-platform-console-standalone-1.10.2.jar" org.junit.platform.console.ConsoleLauncher --class-path . --scan-class-path
+   java -cp ".:junit-platform-console-standalone-1.10.2.jar" org.junit.platform.console.ConsoleLauncher --class-path . --scan-class-path
    ```
 
 ## Code Structure & Explanation
@@ -172,7 +172,7 @@ make test
 - It runs all the unit tests in the project using the JUnit platform.
 - The command in the Makefile is:
   ```sh
-  java -jar ../junit-platform-console-standalone-1.10.2.jar --class-path . --scan-class-path
+  java -jar junit-platform-console-standalone-1.10.2.jar --class-path . --scan-class-path
   ```
 - This finds and executes all test classes in the current directory.
 
@@ -182,10 +182,7 @@ make test
 - **Beginner-friendly:** Anyone can test the project with a single command.
 
 ### How to use
-1. Open a terminal and navigate to the `final` directory:
-   ```sh
-   cd final
-   ```
+1. Open a terminal and navigate to your project directory.
 2. Run all tests with:
    ```sh
    make test
@@ -196,21 +193,21 @@ make test
 - All tests should pass
 - You'll see green checkmarks (✔) for each test
 
-If you have any issues, make sure you have `make` installed and the JUnit jar is present in the parent directory.
+If you have any issues, make sure you have `make` installed and the JUnit jar is present in the project directory.
 
 ## Troubleshooting
 
 ### Common Issues:
 
 1. **"JUnit not found" error:**
-   - Make sure the JUnit JAR is in the parent directory
+   - Make sure the JUnit JAR is in the project directory
    - Check the file name matches exactly: `junit-platform-console-standalone-1.10.2.jar`
 
 2. **"Class not found" error:**
-   - Make sure you compiled all files: `javac -cp "../junit-platform-console-standalone-1.10.2.jar" *.java`
+   - Make sure you compiled all files: `javac -cp "junit-platform-console-standalone-1.10.2.jar" *.java`
 
 3. **Tests not running:**
-   - Verify you're in the correct directory (the `final` folder)
+   - Verify you're in the correct directory (the project root directory)
    - Check that all `.class` files were created after compilation
 
 ## Project Learning Objectives
