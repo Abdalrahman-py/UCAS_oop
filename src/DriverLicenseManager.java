@@ -3,7 +3,7 @@ import java.util.List;
 
 // Manages a list of driver licenses
 public class DriverLicenseManager {
-    private List<DriverLisence> licenses;
+    private List<DriverLicense> licenses;
 
     // Constructor initializes the license list
     public DriverLicenseManager() {
@@ -11,12 +11,12 @@ public class DriverLicenseManager {
     }
 
     // Add a new license to the list
-    public void addLicense(DriverLisence license) {
+    public void addLicense(DriverLicense license) {
         licenses.add(license);
     }
 
     // Update license info by driver ID
-    public boolean updateLicense(int driverID, DriverLisence updatedLicense) {
+    public boolean updateLicense(int driverID, DriverLicense updatedLicense) {
         // Search for license by ID and replace if found
         for (int i = 0; i < licenses.size(); i++) {
             if (licenses.get(i).getDriverID() == driverID) {
@@ -28,8 +28,8 @@ public class DriverLicenseManager {
     }
 
     // Search for a license by driver ID
-    public DriverLisence searchLicense(int driverID) {
-        for (DriverLisence license : licenses) {
+    public DriverLicense searchLicense(int driverID) {
+        for (DriverLicense license : licenses) {
             if (license.getDriverID() == driverID) {
                 return license;
             }
@@ -44,12 +44,12 @@ public class DriverLicenseManager {
     }
 
     // Return a copy of all licenses
-    public List<DriverLisence> getAllLicenses() {
+    public List<DriverLicense> getAllLicenses() {
         return new ArrayList<>(licenses);
     }
 
     // Internal getter for testing purposes
-    List<DriverLisence> getLicensesInternal() {
+    List<DriverLicense> getLicensesInternal() {
         return licenses;
     }
 } 

@@ -80,7 +80,7 @@ public class Main {
             System.out.println("Invalid year. Setting to 0.");
         }
         // Create and add new license
-        DriverLisence newLicense = new DriverLisence(name, address, experience, vehicleType, vehicleBrand, manufacturingYear, issuingYear);
+        DriverLicense newLicense = new DriverLicense(name, address, experience, vehicleType, vehicleBrand, manufacturingYear, issuingYear);
         manager.addLicense(newLicense);
         System.out.println("New license added:");
         System.out.println(newLicense);
@@ -91,7 +91,7 @@ public class Main {
         System.out.print("Enter driver ID to update: ");
         int updateID = scanner.nextInt();
         scanner.nextLine(); // consume newline
-        DriverLisence licenseToUpdate = manager.searchLicense(updateID);
+        DriverLicense licenseToUpdate = manager.searchLicense(updateID);
         if (licenseToUpdate == null) {
             System.out.println("License not found.");
             return;
@@ -132,7 +132,7 @@ public class Main {
     }
 
     // Update a specific field of a license
-    private static void updateLicenseField(DriverLisence license, int field, Scanner scanner) {
+    private static void updateLicenseField(DriverLicense license, int field, Scanner scanner) {
         switch (field) {
             case 1:
                 System.out.print("Enter new driver name: ");
@@ -185,7 +185,7 @@ public class Main {
         int searchOption = scanner.nextInt();
         scanner.nextLine(); // consume newline
         
-        DriverLisence found = performSearch(manager, scanner, searchOption);
+        DriverLicense found = performSearch(manager, scanner, searchOption);
         
         if (found != null) {
             System.out.println("License found:");
@@ -196,7 +196,7 @@ public class Main {
     }
 
     // Helper to perform the actual search
-    private static DriverLisence performSearch(DriverLicenseManager manager, Scanner scanner, int searchOption) {
+    private static DriverLicense performSearch(DriverLicenseManager manager, Scanner scanner, int searchOption) {
         switch (searchOption) {
             case 1:
                 System.out.print("Enter driver ID: ");
@@ -206,7 +206,7 @@ public class Main {
             case 2:
                 System.out.print("Enter driver name: ");
                 String searchName = scanner.nextLine();
-                for (DriverLisence lic : manager.getAllLicenses()) {
+                for (DriverLicense lic : manager.getAllLicenses()) {
                     if (lic.getDriverName().equalsIgnoreCase(searchName)) {
                         return lic;
                     }
@@ -216,7 +216,7 @@ public class Main {
                 System.out.print("Enter registration plate number: ");
                 int regPlate = scanner.nextInt();
                 scanner.nextLine();
-                for (DriverLisence lic : manager.getAllLicenses()) {
+                for (DriverLicense lic : manager.getAllLicenses()) {
                     if (lic.getRegistrationPlateNumber() == regPlate) {
                         return lic;
                     }
@@ -232,7 +232,7 @@ public class Main {
         System.out.print("Enter license ID to remove: ");
         int removeID = scanner.nextInt();
         scanner.nextLine();
-        DriverLisence licenseToRemove = manager.searchLicense(removeID);
+        DriverLicense licenseToRemove = manager.searchLicense(removeID);
         if (licenseToRemove == null) {
             System.out.println("License not found.");
             return;
@@ -276,7 +276,7 @@ public class Main {
             System.out.println("No licenses found.");
         } else {
             System.out.println("All licenses:");
-            for (DriverLisence lic : allLicenses) {
+            for (DriverLicense lic : allLicenses) {
                 System.out.println(lic);
                 System.out.println("----------------------");
             }
@@ -287,7 +287,7 @@ public class Main {
         System.out.print("Enter license ID: ");
         int id = scanner.nextInt();
         scanner.nextLine();
-        DriverLisence lic = manager.searchLicense(id);
+        DriverLicense lic = manager.searchLicense(id);
         if (lic != null) {
             System.out.println(lic);
         } else {

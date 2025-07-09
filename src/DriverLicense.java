@@ -1,5 +1,5 @@
 // Represents a driver's license with all relevant info
-public class DriverLisence {
+public class DriverLicense {
     // Static counters for unique IDs and plate numbers
     private static int nextDriverID = 100000;
     private static int nextRegistrationPlate = 60000000;
@@ -17,9 +17,9 @@ public class DriverLisence {
     private int validityPeriod; // 1 year for novice, 4 years for expert
 
     // Constructor for new licenses (auto-assigns IDs)
-    public DriverLisence(String driverName, String address, String experience, String vehicleType, String vehicleBrand, int manufacturingYear, int issuingYear) {
+    public DriverLicense(String driverName, String address, String experience, String vehicleType, String vehicleBrand, int manufacturingYear, int issuingYear) {
         this.driverName = driverName;
-        this.driverID = nextDriverID++;
+        this.driverID = nextDriverID++; 
         this.address = address;
         this.experience = experience;
         this.vehicleType = vehicleType;
@@ -38,7 +38,7 @@ public class DriverLisence {
     }
 
     // Constructor for loading licenses with known IDs
-    public DriverLisence(String driverName, int driverID, String address, String experience, String vehicleType, String vehicleBrand, int manufacturingYear, int registrationPlateNumber, int issuingYear) {
+    public DriverLicense(String driverName, int driverID, String address, String experience, String vehicleType, String vehicleBrand, int manufacturingYear, int registrationPlateNumber, int issuingYear) {
         this.driverName = driverName;
         this.driverID = driverID;
         this.address = address;
@@ -139,7 +139,7 @@ public class DriverLisence {
     // String representation for easy printing
     @Override
     public String toString() {
-        return "DriverLisence{" +
+        return "DriverLicense{" +
                 "driverName='" + driverName + '\'' +
                 ", driverID=" + driverID +
                 ", address='" + address + '\'' +
